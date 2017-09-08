@@ -1,3 +1,42 @@
-Hello World 测试
-<h1>abc</h1>
-<a href="http://www.baidu.com">百度</a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Take It Easy</title>
+</head>
+<body>
+<h3>github多账号设置</h3> 
+1.touch ~/.ssh/config
+2.vim
+<pre>
+    # default                                                                       
+    Host github.com
+    HostName github.com
+    User git
+    IdentityFile ~/.ssh/id_rsa
+    # second                                                                           
+    Host second.github.com
+    HostName github.com
+    User git
+    IdentityFile ~/.ssh/id_rsa_x
+</pre>
+3. test<br>
+ssh -T git@github.com<br>
+ssh -T git@second.github.com<br>
+4. clone repo to local<br>
+git clone git@github.com:xxx/xxx.git <br>
+5. unset global name and email, set local name and email <br>
+git config --global --unset user.name<br>
+git config --global --unset user.email<br>
+git consig user.name "xxx" <br>
+git consig user.name "xxx@xxx.com" <br>
+6. rebuild <code>origin</code><br>
+git remote rm origin<br>
+git remote add origin git@second.github.com:xxx/xxxx.git <br>
+7. test<br>
+git push origin master
+
+</body>
+</html>
